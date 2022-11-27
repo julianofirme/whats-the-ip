@@ -27,6 +27,12 @@ func GenApp() *cli.App {
 			Flags:  flags,
 			Action: searchIps,
 		},
+		{
+			Name:   "server",
+			Usage:  "Search server name",
+			Flags:  flags,
+			Action: searchServer,
+		},
 	}
 
 	return app
@@ -42,5 +48,18 @@ func searchIps(c *cli.Context) {
 
 	for _, ip := range ips {
 		fmt.Println(ip)
+	}
+}
+
+func searchServer(c *cli.Context) {
+	host := c.String("host")
+
+	servers, err := net.LookupNS(host)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for _, server := range servers {
+		fmt.Println(server)
 	}
 }
