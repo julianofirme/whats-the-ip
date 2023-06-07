@@ -1,6 +1,6 @@
 # Whats the IP
 
-App to lookup the ip or the servernames of sites
+App to lookup the ip or the servernames of sites.
 
 ## Installing
 
